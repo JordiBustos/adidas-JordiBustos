@@ -37,7 +37,7 @@ const Navbar = () => {
 								<NavLink href="/">Shop</NavLink>
 							</NavLi>
 						</Links>
-						<Contenedor>
+						<Container>
 							<NavLi>
 								<NavLinkIcon href="/">
 									<FontAwesomeIcon
@@ -49,7 +49,7 @@ const Navbar = () => {
 									0
 								</CartValue>
 							</NavLi>
-						</Contenedor>
+						</Container>
 					</NavUl>
 				</nav>
 			</Wrapper>
@@ -141,7 +141,7 @@ const Links = styled.div`
 	}
 `
 
-const Contenedor = styled.div`
+const Container = styled.div`
 	position: relative;
 `
 
