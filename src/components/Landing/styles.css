@@ -1,0 +1,104 @@
+figure { margin:0; }
+
+.gallery__img--1 {
+    width:70%;
+    object-fit: cover;
+    display: block;
+    justify-self: center;
+    margin: 5% auto;
+}
+.gallery__img--2 {
+    width:60%;
+    object-fit: cover;
+}
+.gallery__img--3 {
+    width:55%;
+    object-fit: cover;
+    margin-left:40%;
+}
+.gallery__line--1 {
+    margin-top:2rem;
+    height: 90vh;
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 3;
+    border-left: 3px solid black;
+    z-index: 999;
+    width: 3px;
+}
+
+.gallery__item--1 {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+    position: relative;
+}
+
+figcaption.title {
+    position: absolute;
+    top: 35%;
+    left: 2%;
+    font-weight: 700;
+    font-size:3rem;
+}
+
+figcaption a.titleLink {
+    text-decoration: none;
+    transition: .2s;
+    color: black;
+}
+figcaption a.titleLink:hover {
+    color: rgb(48, 48, 48);
+}
+figcaption a.titleLink:active {
+    color:black;
+}
+
+figcaption.title a.callToAction {
+    font-size:1.2rem;
+    margin-top:5%;
+    text-decoration: none;
+    color:white;
+    background-color: black;
+    box-shadow: 6px 8px 15px rgba(0, 0, 0, .4);
+    
+    display: block;
+    text-transform: uppercase;
+    max-width:40%;
+    transition: .2s;
+    padding:1rem 2rem 1rem 3rem;
+    border-radius: 5px;
+}
+figcaption.title a.callToAction:hover {
+    color:rgb(155, 155, 155);
+    transform: translateY(-3px);
+    box-shadow: 6px 8px 10px rgba(0, 0, 0, .4);
+}
+figcaption.title a.callToAction:active {
+    transform: translateY(0);
+    box-shadow: 6px 8px 15px rgba(0, 0, 0, .4);
+}
+figcaption.subtitle {
+    position: absolute;
+    top:85%;
+    left: 18%;
+    font-weight: 700;
+    font-size:2.5rem;
+}
+.gallery__item--1 figcaption {
+    margin-left:3%;
+}
+.gallery__item--2 {
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 2;
+    position: relative;
+
+    margin-top:10%;
+    margin-left:5%;
+}
+.gallery__item--3 {
+    grid-column: 3 / span 1;
+    grid-row: 2 / span 2;
+    z-index: 999;
+
+    margin-top:16%;
+
+}
