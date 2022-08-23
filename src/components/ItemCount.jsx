@@ -17,7 +17,7 @@ const ItemCount = ({ stock, initial }) => {
 					}
 				}}
 			>
-				-
+			  -
 			</ItemCountButtonDecrease>
 
 			<ItemCountValue>{ammount}</ItemCountValue>
