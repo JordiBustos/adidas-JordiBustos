@@ -2,42 +2,41 @@ import styled from "styled-components";
 import { useState } from "react";
 
 const ItemCount = ({ stock, initial }) => {
-	const [ammount, setAmmount] = useState(initial);
+  const [ammount, setAmmount] = useState(initial);
 
-	return (
-		<ItemCountContainer>
-			<ItemCountButtonDecrease
-				onClick={() => {
-					if (ammount === `${stock} (max)`) {
-						setAmmount(stock - 1);
-					} else {
-						if (ammount - 1 > 0) {
-							setAmmount(ammount - 1);
-						}
-					}
-				}}
-			>
-			  -
-			</ItemCountButtonDecrease>
+  return (
+    <ItemCountContainer>
+      <ItemCountButtonDecrease
+	onClick={() => {
+	  if (ammount === `${stock} (max)`) {
+            setAmmount(stock - 1);
+	  } else {
+	    if (ammount - 1 > 0) {
+	       setAmmount(ammount - 1);
+	    }
+	   }
+	 }}
+       >
+       -
+       </ItemCountButtonDecrease>
 
-			<ItemCountValue>{ammount}</ItemCountValue>
-
-			<ItemCountButton
-				onClick={() => {
-					if (ammount + 1 < stock) {
-						setAmmount(ammount + 1);
-					} else {
-						if (ammount + 1 === stock) {
-							setAmmount(`${ammount + 1} (max)`);
-						}
-					}
-				}}
-			>
-				+
-			</ItemCountButton>
-			<ItemButtonAddCart>Add to cart</ItemButtonAddCart>
-		</ItemCountContainer>
-	);
+      <ItemCountValue>{ammount}</ItemCountValue>
+      <ItemCountButton
+         onClick={() => {
+           if (ammount + 1 < stock) {
+	     setAmmount(ammount + 1);
+	   } else {
+	     if (ammount + 1 === stock) {
+	       setAmmount(`${ammount + 1} (max)`);
+	     }
+	   }
+         }}
+      >
+      +
+      </ItemCountButton>
+      <ItemButtonAddCart>Add to cart</ItemButtonAddCart>
+  </ItemCountContainer>
+  );
 };
 
 const ItemCountContainer = styled.div`
