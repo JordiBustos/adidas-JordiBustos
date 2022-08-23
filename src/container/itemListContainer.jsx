@@ -1,7 +1,11 @@
-const itemListContainer = ({greeting}) => {
-    return (
-        <h2 style={{"text-align":"center"}}> {greeting} </h2>
-    );
-}
+import ItemCount from "../components/ItemCount";
+const itemListContainer = () => {
+	return (
+		<ItemCount
+			stock={5}
+			initial={1}
+		/>
+	);
+};
 
 export default itemListContainer;

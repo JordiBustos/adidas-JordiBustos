@@ -6,7 +6,7 @@ import Landing from './components/Landing/landing';
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <Navbar cartValueNavBar={0} />
       <ItemListContainer greeting="Saludos y gracias por corregir :)" />
       <Landing />
     </div>

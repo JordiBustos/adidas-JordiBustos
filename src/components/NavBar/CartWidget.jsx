@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import styled from 'styled-components';
 
-const CartWidget = ({cartValue}) => {
+const CartWidget = ({ cartValue }) => {
     return (
         <>
             <NavLinkIcon href="/">
@@ -12,7 +12,7 @@ const CartWidget = ({cartValue}) => {
                 />
             </NavLinkIcon>
             <CartValue>
-                {cartValue}
+                { cartValue }
             </CartValue>
         </>
     )

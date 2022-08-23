@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import CartWidget from './CartWidget.jsx';
 
 
-const Navbar = () => {
+const Navbar = ( {cartValueNavBar} ) => {
 	return (
 		<Header>
 			<Wrapper>
@@ -39,7 +39,7 @@ const Navbar = () => {
 						</Links>
 						<Container>
 							<NavLi>
-								<CartWidget cartValue={0} />
+								<CartWidget cartValue={cartValueNavBar} />
 							</NavLi>
 						</Container>
 					</NavUl>
