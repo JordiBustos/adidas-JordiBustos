@@ -11,7 +11,7 @@ const ItemCount = ({ stock, initial }) => {
 					if (ammount === `${stock} (max)`) {
 						setAmmount(stock - 1);
 					} else {
-						if (ammount - 1 >= 1) {
+						if (ammount - 1 > 0) {
 							setAmmount(ammount - 1);
 						}
 					}
