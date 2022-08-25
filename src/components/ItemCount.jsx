@@ -17,26 +17,26 @@ const ItemCount = ({ stock, initial }) => {
 					}
 				}}
 			>
-			  -
+				-
 			</ItemCountButtonDecrease>
 
-      <ItemCountValue>{ammount}</ItemCountValue>
-      <ItemCountButton
-         onClick={() => {
-           if (ammount + 1 < stock) {
-	     setAmmount(ammount + 1);
-	   } else {
-	     if (ammount + 1 === stock) {
-	       setAmmount(`${ammount + 1} (max)`);
-	     }
-	   }
-         }}
-      >
-      +
-      </ItemCountButton>
-      <ItemButtonAddCart>Add to cart</ItemButtonAddCart>
-  </ItemCountContainer>
-  );
+			<ItemCountValue>{ammount}</ItemCountValue>
+			<ItemCountButton
+				onClick={() => {
+					if (ammount + 1 < stock) {
+						setAmmount(ammount + 1);
+					} else {
+						if (ammount + 1 === stock) {
+							setAmmount(`${ammount + 1} (max)`);
+						}
+					}
+				}}
+			>
+				+
+			</ItemCountButton>
+			<ItemButtonAddCart>Add to cart</ItemButtonAddCart>
+		</ItemCountContainer>
+	);
 };
 
 const ItemCountContainer = styled.div`
