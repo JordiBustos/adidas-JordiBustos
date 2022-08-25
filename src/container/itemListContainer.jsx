@@ -7,7 +7,7 @@ const itemListContainer = () => {
 		<ItemCount
 			stock={5}
 			initial={1}
-			onAdd={() => {console.log('add')}}
+			onAdd={() => {console.log('add to cart')}}
 		/>
 		<ItemList />
 		</>
