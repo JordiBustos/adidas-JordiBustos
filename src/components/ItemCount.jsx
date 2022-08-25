@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-const ItemCount = ({ stock, initial }) => {
+const ItemCount = ({ stock, initial, onAdd }) => {
 	const [ammount, setAmmount] = useState(initial);
-
+	onAdd();
 	return (
 		<ItemCountContainer>
 			<ItemCountButtonDecrease
