@@ -1,19 +1,20 @@
 import styled from 'styled-components';
 
 const ItemDetail = (item) => {
+  const data = item.item;
   return (
     <Wrapper>
-    {!Array.isArray(item.item.img) ? (
+    {!Array.isArray(data.img) ? (
         <h2>Loading...</h2>
       ) : (
         <>
-        <TwoColumnImg src={item.item.img[0]} alt='' />
-        <OneColumnImg src={item.item.img[1]} alt='' />
-        <SecondToThirdColumnImg src={item.item.img[2]} alt='' />           
+        <TwoColumnImg src={data.img[0]} alt={data.title} />
+        <OneColumnImg src={data.img[1]} alt={data.title} />
+        <SecondToThirdColumnImg src={data.img[2]} alt={data.title} />           
         <InfoWrapper>
-          <Type>{item.item.type}</Type>
-          <Title>{item.item.title}</Title>
-          <Price>${item.item.price}</Price>
+          <Type>{data.type}</Type>
+          <Title>{data.title}</Title>
+          <Price>${data.price}</Price>
         </InfoWrapper>
         
         <ExtraInfo>
@@ -24,9 +25,9 @@ const ItemDetail = (item) => {
           <Paragraph>
             JOIN ADICLUB TO GET UNLIMITED FREE STANDARD SHIPPING, RETURNS, & EXCHANGES
           </Paragraph>
-          {Array.isArray(item.item.list) ? (
+          {Array.isArray(data.list) ? (
             <UlList>
-              {item.item.list.map((item, index) => (
+              {data.list.map((item, index) => (
                 <LiList key={index}>{item}</LiList>
               ))
               }
@@ -35,7 +36,7 @@ const ItemDetail = (item) => {
             <>
             </>
           )}
-          <Detail>{item.item.detail}</Detail>
+          <Detail>{data.detail}</Detail>
         </ExtraInfo>
 
         </>
