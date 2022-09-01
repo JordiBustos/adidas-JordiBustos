@@ -3,7 +3,6 @@ import { useState } from "react";
 
 const ItemCount = ({ stock, initial, onAdd }) => {
 	const [ammount, setAmmount] = useState(initial);
-	onAdd();
 	return (
 		<ItemCountContainer>
 			<ItemCountButtonDecrease
