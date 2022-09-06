@@ -1,50 +1,50 @@
-import styled from 'styled-components';
-import CartWidget from './CartWidget.jsx';
+import styled from "styled-components";
+import CartWidget from "./CartWidget.jsx";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-const Navbar = ( {cartValueNavBar} ) => {
+const Navbar = ({ cartValueNavBar }) => {
 	return (
 		<Header>
 			<Wrapper>
 				<nav>
 					<NavUl>
 						<NavLi>
-							<Link to="/">  
-							<NavLink>
-								<svg
-									width="50"
-									height="50"
-									viewBox="0 0 50 50"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg"
-								>
-									<path
-										fillRule="evenodd"
-										clipRule="evenodd"
-										d="M50.0701 39.7718L31.9254 8.33325L22.2068 13.9395L37.112 39.7718H50.0701ZM32.7817 39.7719L20.7971 19.0254L11.0785 24.6317L19.8235 39.7719H32.7817ZM9.71859 29.7344L15.5095 39.7719H2.55134L0 35.3406L9.71859 29.7344Z"
-										fill="black"
-									/>
-								</svg>
-							</NavLink>
+							<Link to="/">
+								<NavLink>
+									<svg
+										width="50"
+										height="50"
+										viewBox="0 0 50 50"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											fillRule="evenodd"
+											clipRule="evenodd"
+											d="M50.0701 39.7718L31.9254 8.33325L22.2068 13.9395L37.112 39.7718H50.0701ZM32.7817 39.7719L20.7971 19.0254L11.0785 24.6317L19.8235 39.7719H32.7817ZM9.71859 29.7344L15.5095 39.7719H2.55134L0 35.3406L9.71859 29.7344Z"
+											fill="black"
+										/>
+									</svg>
+								</NavLink>
 							</Link>
 						</NavLi>
 						<Links>
 							<NavLi>
-							<Link to="/category/men">
-								<NavLink>Men</NavLink>
-							</Link>
+								<Link to="/category/men">
+									<NavLink>Men</NavLink>
+								</Link>
 							</NavLi>
 							<NavLi>
 								<Link to="/category/women">
 									<NavLink>Women</NavLink>
 								</Link>
-							</NavLi>	
+							</NavLi>
 							<NavLi>
 								<Link to="/category/shop">
 									<NavLink>Shop</NavLink>
 								</Link>
-							</NavLi>							
+							</NavLi>
 						</Links>
 						<Container>
 							<NavLi>
@@ -69,7 +69,7 @@ const Wrapper = styled.header`
 	border-bottom: 3px solid black;
 
 	@media (min-width: 768px) {
-		max-height:6rem;
+		max-height: 6rem;
 	}
 `;
 
@@ -82,7 +82,6 @@ const NavUl = styled.ul`
 	justify-content: space-evenly;
 	align-items: flex-start;
 `;
-
 
 const NavLi = styled.li`
 	flex-basis: 10%;
@@ -124,25 +123,25 @@ const Links = styled.div`
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: center;
-	
+
 	${NavLink}:hover {
 		text-decoration: 2px underline black;
 	}
 	${NavLink} {
-		width:90%;
+		width: 90%;
 	}
 
 	${NavLi} {
-		flex-basis:12%;
+		flex-basis: 12%;
 	}
 
-	@media (max-width:500px) {
-		flex-basis:55%;
+	@media (max-width: 500px) {
+		flex-basis: 55%;
 	}
-`
+`;
 
 const Container = styled.div`
 	position: relative;
-`
+`;
 
 export default Navbar;
