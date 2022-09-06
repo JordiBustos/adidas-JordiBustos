@@ -1,4 +1,4 @@
-# Navigation
+# Navigation gif
 ![Gif showing navigation](https://github.com/JordiBustos/adidas-JordiBustos/blob/master/gif.gif)
 
 ## Available Scripts
