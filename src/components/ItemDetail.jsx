@@ -1,20 +1,35 @@
 import styled from 'styled-components';
+import ItemCount from './ItemCount';
 
-const ItemDetail = (item) => {
-  const data = item.item;
+
+const ItemDetail = ({item}) => {
+  console.log(item)
   return (
     <Wrapper>
-    {!Array.isArray(data.img) ? (
+    {!item ? (
         <h2>Loading...</h2>
       ) : (
         <>
-        <TwoColumnImg src={data.img[0]} alt={data.title} />
-        <OneColumnImg src={data.img[1]} alt={data.title} />
-        <SecondToThirdColumnImg src={data.img[2]} alt={data.title} />           
+        {(Array.isArray(item.pictures) && item.pictures.length > 2) ? (
+          <>
+          <TwoColumnImg src={item.pictures[0].url}/>
+          <OneColumnImg src={item.pictures[1].url}/>
+          <SecondToThirdColumnImg src={item.pictures[2].url} /> 
+          </>
+        ) : (
+          <>
+          <TwoColumnImg src={item.thumbnail}/>
+          <OneColumnImg src={item.thumbnail}/>
+          <SecondToThirdColumnImg src={item.thumbnail} /> 
+          </>
+        )}
+
+
+
         <InfoWrapper>
-          <Type>{data.type}</Type>
-          <Title>{data.title}</Title>
-          <Price>${data.price}</Price>
+          <Type>{item.warranty}</Type>
+          <Title>{item.title}</Title>
+          <Price>${item.price}</Price>
         </InfoWrapper>
         
         <ExtraInfo>
@@ -25,9 +40,9 @@ const ItemDetail = (item) => {
           <Paragraph>
             JOIN ADICLUB TO GET UNLIMITED FREE STANDARD SHIPPING, RETURNS, & EXCHANGES
           </Paragraph>
-          {Array.isArray(data.list) ? (
+          {Array.isArray(item.list) ? (
             <UlList>
-              {data.list.map((item, index) => (
+              {item.list.map((item, index) => (
                 <LiList key={index}>{item}</LiList>
               ))
               }
@@ -36,9 +51,15 @@ const ItemDetail = (item) => {
             <>
             </>
           )}
-          <Detail>{data.detail}</Detail>
+          <ItemCount
+              stock={5}
+              initial={1}
+              onAdd={() => {
+                console.log("add to cart");
+              }}
+            />
+          <Detail>{item.detail}</Detail>
         </ExtraInfo>
-
         </>
       )
       }
@@ -109,7 +130,7 @@ const InfoWrapper = styled.div`
 `
 
 const Title = styled.h1`
-  font-size: 4rem;
+  font-size: 2rem;
   margin-top:0;
 `
 

@@ -43,14 +43,14 @@ const ItemCountContainer = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	flex-flow: row wrap;
-	width: 15%;
+	width: 60%;
 	padding: 0.5rem;
 	border-radius: 0.5rem;
 	background-color: #f5f5f5;
 	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-	margin-top: 5%;
-	margin-left: 10%;
+	margin-top: 15%;
 `;
+
 const ItemCountButton = styled.button`
 	background-color: black;
 	border: none;

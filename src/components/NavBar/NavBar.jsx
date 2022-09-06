@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import CartWidget from './CartWidget.jsx';
 
+import { Link } from 'react-router-dom';
 
 const Navbar = ( {cartValueNavBar} ) => {
 	return (
@@ -9,7 +10,8 @@ const Navbar = ( {cartValueNavBar} ) => {
 				<nav>
 					<NavUl>
 						<NavLi>
-							<NavLink href="/">
+							<Link to="/">  
+							<NavLink>
 								<svg
 									width="50"
 									height="50"
@@ -25,17 +27,24 @@ const Navbar = ( {cartValueNavBar} ) => {
 									/>
 								</svg>
 							</NavLink>
+							</Link>
 						</NavLi>
 						<Links>
 							<NavLi>
-								<NavLink href="/">Men</NavLink>
+							<Link to="/category/men">
+								<NavLink>Men</NavLink>
+							</Link>
 							</NavLi>
 							<NavLi>
-								<NavLink href="/">Women</NavLink>
-							</NavLi>
+								<Link to="/category/women">
+									<NavLink>Women</NavLink>
+								</Link>
+							</NavLi>	
 							<NavLi>
-								<NavLink href="/">Shop</NavLink>
-							</NavLi>
+								<Link to="/category/shop">
+									<NavLink>Shop</NavLink>
+								</Link>
+							</NavLi>							
 						</Links>
 						<Container>
 							<NavLi>

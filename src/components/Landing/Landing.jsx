@@ -1,0 +1,69 @@
+import styled from "styled-components";
+import "./styles.css";
+
+import ItemListContainer from "../../container/ItemListContainer";
+import { Link, useParams } from "react-router-dom";
+
+const LandingBanner = () => {
+	// SHOP -> ALL
+	// MEN -> FILTER BY GENDER: MEN
+	// WOMEN -> FILTER BYGENDER: WOMEN
+	const { id } = useParams();
+	return (
+		<>
+			<Container>
+				<Wrapper>
+					<figure className="gallery__item--1">
+						<img
+							className="gallery__img--1"
+							src={require("./img/shoe-banner.webp")}
+							alt="Shoe"
+						/>
+						<figcaption className="title">
+							<Link to="/">
+								<button className="titleLink">
+									{" "}
+									BUY MORE, SAVE MORE{" "}
+								</button>
+								<button className="callToAction">
+									Shop now
+								</button>
+							</Link>
+						</figcaption>
+					</figure>
+					<div className="gallery__line--1"></div>
+					<figure className="gallery__item--2">
+						<img
+							className="gallery__img--2"
+							src={require("./img/womens.webp")}
+							alt="Two womens wearing adidas clothes"
+						/>
+					</figure>
+					<figure className="gallery__item--3">
+						<img
+							className="gallery__img--3"
+							src={require("./img/2.jpg")}
+							alt="Woman wearing adidas clothes"
+						/>
+					</figure>
+				</Wrapper>
+			</Container>
+			<ItemListContainer category={id} />
+		</>
+	);
+};
+
+const Container = styled.section`
+	width: 100%;
+`;
+
+const Wrapper = styled.div`
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 33.3vh);
+
+	border-bottom: 3px solid black;
+	margin-bottom: 3rem;
+`;
+
+export default LandingBanner;
