@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
-const ItemCount = ({ammount, onAdd, onDecrease, redirect }) => {
+const ItemCount = ({ ammount, onAdd, onDecrease }) => {
 	return (
-
 		<ItemCountContainer>
 			<ItemCountButtonDecrease
 				onClick={() => {
@@ -20,7 +19,14 @@ const ItemCount = ({ammount, onAdd, onDecrease, redirect }) => {
 			>
 				+
 			</ItemCountButton>
-			<AddToCartButton onClick={() => {console.log('Agregado')}}> Agregar al carrito </AddToCartButton>
+			<AddToCartButton
+				onClick={() => {
+					console.log("Agregado");
+				}}
+			>
+				{" "}
+				Agregar al carrito{" "}
+			</AddToCartButton>
 		</ItemCountContainer>
 	);
 };
@@ -67,7 +73,7 @@ const ItemCountButtonDecrease = styled.button`
 
 const AddToCartButton = styled.button`
 	flex-basis: 100%;
-	margin-top:1rem;
+	margin-top: 1rem;
 	height: 3rem;
 	background-color: white;
 	color: black;

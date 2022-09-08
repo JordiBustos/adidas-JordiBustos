@@ -4,36 +4,26 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 const ItemDetail = ({ item }) => {
 	const [ammount, setAmmount] = useState(1);
-	
+
 	const addOne = () => {
 		if (ammount + 1 < item.available_quantity) {
 			setAmmount(ammount + 1);
 		} else {
-			if (
-				ammount + 1 ===
-				item.available_quantity
-			) {
+			if (ammount + 1 === item.available_quantity) {
 				setAmmount(`${ammount + 1} (max)`);
 			}
 		}
-	}
+	};
 	const decreaseOne = () => {
-		if (
-			ammount ===
-			`${item.available_quantity} (max)`
-		) {
+		if (ammount === `${item.available_quantity} (max)`) {
 			setAmmount(item.available_quantity - 1);
 		} else {
 			if (ammount - 1 > 0) {
 				setAmmount(ammount - 1);
 			}
 		}
-	}
+	};
 
-	const redirectToCart = () => {
-		console.log('redirigido')
-	}
-	
 	return (
 		<Wrapper>
 			{!item ? (
@@ -72,7 +62,9 @@ const ItemDetail = ({ item }) => {
 							JOIN ADICLUB TO GET UNLIMITED FREE STANDARD
 							SHIPPING, RETURNS, & EXCHANGES
 						</Paragraph>
-						<Paragraph>Cantidad disponible {item.available_quantity}</Paragraph>
+						<Paragraph>
+							Cantidad disponible {item.available_quantity}
+						</Paragraph>
 						{Array.isArray(item.list) ? (
 							<UlList>
 								{item.list.map((item, index) => (
@@ -86,12 +78,12 @@ const ItemDetail = ({ item }) => {
 							onAdd={addOne}
 							onDecrease={decreaseOne}
 							ammount={ammount}
-							redirect={redirectToCart}
-
 						/>
 						<Detail>{item.detail}</Detail>
-						<Link to="/cart"> <AddToCartButton>Terminar compra</AddToCartButton></Link>
-
+						<Link to="/cart">
+							{" "}
+							<AddToCartButton>Terminar compra</AddToCartButton>
+						</Link>
 					</ExtraInfo>
 				</>
 			)}
