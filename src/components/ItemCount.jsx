@@ -1,19 +1,12 @@
 import styled from "styled-components";
-import { useState } from "react";
 
-const ItemCount = ({ stock, initial, onAdd }) => {
-	const [ammount, setAmmount] = useState(initial);
+const ItemCount = ({ammount, onAdd, onDecrease, redirect }) => {
 	return (
+
 		<ItemCountContainer>
 			<ItemCountButtonDecrease
 				onClick={() => {
-					if (ammount === `${stock} (max)`) {
-						setAmmount(stock - 1);
-					} else {
-						if (ammount - 1 > 0) {
-							setAmmount(ammount - 1);
-						}
-					}
+					onDecrease();
 				}}
 			>
 				-
@@ -22,18 +15,12 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 			<ItemCountValue>{ammount}</ItemCountValue>
 			<ItemCountButton
 				onClick={() => {
-					if (ammount + 1 < stock) {
-						setAmmount(ammount + 1);
-					} else {
-						if (ammount + 1 === stock) {
-							setAmmount(`${ammount + 1} (max)`);
-						}
-					}
+					onAdd();
 				}}
 			>
 				+
 			</ItemCountButton>
-			<ItemButtonAddCart>Add to cart</ItemButtonAddCart>
+			<AddToCartButton onClick={() => {console.log('Agregado')}}> Agregar al carrito </AddToCartButton>
 		</ItemCountContainer>
 	);
 };
@@ -52,10 +39,10 @@ const ItemCountContainer = styled.div`
 `;
 
 const ItemCountButton = styled.button`
-	background-color: black;
+	background-color: white;
 	border: none;
-	color: white;
-	font-size: 1.2rem;
+	color: black;
+	font-size: 1.5rem;
 	padding: 0.3rem 0.3rem;
 	flex-basis: 10%;
 
@@ -67,27 +54,28 @@ const ItemCountValue = styled.span`
 	font-size: 1.2rem;
 `;
 const ItemCountButtonDecrease = styled.button`
-	background-color: black;
+	background-color: white;
 	border: none;
-	color: white;
-	font-size: 1.2rem;
+	color: black;
+	font-size: 1.6rem;
 	padding: 0.3rem 0.3rem;
 	flex-basis: 10%;
 	&:hover {
 		color: #7c7c7c;
 	}
 `;
-const ItemButtonAddCart = styled.button`
-	background-color: black;
-	border: none;
-	color: white;
-	font-size: 1.2rem;
-	padding: 0.3rem 0.3rem;
+
+const AddToCartButton = styled.button`
 	flex-basis: 100%;
-	margin-top: 1rem;
+	margin-top:1rem;
+	height: 3rem;
+	background-color: white;
+	color: black;
+	border: 1px solid black;
 
 	&:hover {
-		color: #7c7c7c;
+		background-color: black;
+		color: white;
 	}
 `;
 

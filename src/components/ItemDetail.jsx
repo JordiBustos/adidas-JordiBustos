@@ -1,8 +1,39 @@
 import styled from "styled-components";
 import ItemCount from "./ItemCount";
-
+import { useState } from "react";
+import { Link } from "react-router-dom";
 const ItemDetail = ({ item }) => {
-	console.log(item);
+	const [ammount, setAmmount] = useState(1);
+	
+	const addOne = () => {
+		if (ammount + 1 < item.available_quantity) {
+			setAmmount(ammount + 1);
+		} else {
+			if (
+				ammount + 1 ===
+				item.available_quantity
+			) {
+				setAmmount(`${ammount + 1} (max)`);
+			}
+		}
+	}
+	const decreaseOne = () => {
+		if (
+			ammount ===
+			`${item.available_quantity} (max)`
+		) {
+			setAmmount(item.available_quantity - 1);
+		} else {
+			if (ammount - 1 > 0) {
+				setAmmount(ammount - 1);
+			}
+		}
+	}
+
+	const redirectToCart = () => {
+		console.log('redirigido')
+	}
+	
 	return (
 		<Wrapper>
 			{!item ? (
@@ -33,7 +64,6 @@ const ItemDetail = ({ item }) => {
 					</InfoWrapper>
 
 					<ExtraInfo>
-						<AddToCartButton> Agregar al carrito </AddToCartButton>
 						<Paragraph>
 							PAY OVER TIME IN 4 INTEREST-FREE PAYMENTS & MORE
 							FLEXIBLE OPTIONS WITH AFFIRM, KLARNA OR AFTERPAY
@@ -42,6 +72,7 @@ const ItemDetail = ({ item }) => {
 							JOIN ADICLUB TO GET UNLIMITED FREE STANDARD
 							SHIPPING, RETURNS, & EXCHANGES
 						</Paragraph>
+						<Paragraph>Cantidad disponible {item.available_quantity}</Paragraph>
 						{Array.isArray(item.list) ? (
 							<UlList>
 								{item.list.map((item, index) => (
@@ -52,13 +83,15 @@ const ItemDetail = ({ item }) => {
 							<></>
 						)}
 						<ItemCount
-							stock={5}
-							initial={1}
-							onAdd={() => {
-								console.log("add to cart");
-							}}
+							onAdd={addOne}
+							onDecrease={decreaseOne}
+							ammount={ammount}
+							redirect={redirectToCart}
+
 						/>
 						<Detail>{item.detail}</Detail>
+						<Link to="/cart"> <AddToCartButton>Terminar compra</AddToCartButton></Link>
+
 					</ExtraInfo>
 				</>
 			)}
@@ -150,7 +183,7 @@ const Detail = styled.p`
 `;
 
 const AddToCartButton = styled.button`
-	width: 50%;
+	width: 90%;
 	height: 3rem;
 	background-color: white;
 	color: black;
