@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
-import ItemCount from "../components/ItemCount";
+import { useContext, useEffect, useState } from "react";
 import ItemList from "../components/ItemList";
+import { CacheContext } from "../contexts/CacheContext";
 
 const ItemListContainer = ({ category }) => {
 	const [items, setItems] = useState([]);
+	const { cache, addToCache } = useContext(CacheContext);
+
 	useEffect(() => {
 		requestItems();
 	}, [category]);
 
-	function filterByGender(category, items) {
+	function filterByGender() {
 		let filteredItems = [];
 		let filterCriteria;
 		category === "women"
@@ -35,16 +37,25 @@ const ItemListContainer = ({ category }) => {
 	}
 
 	async function requestItems() {
-		const res = await fetch(
-			`https://api.mercadolibre.com/sites/MLA/search?q=Adidas`
-		);
-		if (res.ok) {
-			const json = await res.json();
-			category === "shop" || category === undefined
-				? setItems(json.results)
-				: filterByGender(category, json.results);
+		if (cache.length === 0) {
+			console.log("cache vacio");
+			const res = await fetch(
+				`https://api.mercadolibre.com/sites/MLA/search?q=Adidas`
+			);
+			if (res.ok) {
+				const json = await res.json();
+
+				addToCache(json.results);
+				setItems(json.results);
+			} else {
+				console.log("Error");
+			}
 		} else {
-			console.log("Error");
+			if (category === "shop" || category === undefined) {
+				setItems(cache);
+			} else {
+				filterByGender();
+			}
 		}
 	}
 

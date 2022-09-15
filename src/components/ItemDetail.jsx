@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import ItemCount from "./ItemCount";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../contexts/CartContext";
+
+
 const ItemDetail = ({ item }) => {
 	const [ammount, setAmmount] = useState(1);
-
+	const { addItem } = useContext(CartContext);
+	
 	const addOne = () => {
 		if (ammount + 1 < item.available_quantity) {
 			setAmmount(ammount + 1);
@@ -24,6 +28,9 @@ const ItemDetail = ({ item }) => {
 		}
 	};
 
+	function addToCart() {
+		addItem(item, ammount);
+	}
 	return (
 		<Wrapper>
 			{!item ? (
@@ -78,11 +85,12 @@ const ItemDetail = ({ item }) => {
 							onAdd={addOne}
 							onDecrease={decreaseOne}
 							ammount={ammount}
+							onFinish={addToCart}
 						/>
 						<Detail>{item.detail}</Detail>
 						<Link to="/cart">
 							{" "}
-							<AddToCartButton>Terminar compra</AddToCartButton>
+							<AddToCartButton>Comprar</AddToCartButton>
 						</Link>
 					</ExtraInfo>
 				</>

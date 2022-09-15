@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ItemCount = ({ ammount, onAdd, onDecrease }) => {
+const ItemCount = ({ ammount, onAdd, onDecrease, onFinish }) => {
 	return (
 		<ItemCountContainer>
 			<ItemCountButtonDecrease
@@ -20,9 +20,7 @@ const ItemCount = ({ ammount, onAdd, onDecrease }) => {
 				+
 			</ItemCountButton>
 			<AddToCartButton
-				onClick={() => {
-					console.log("Agregado");
-				}}
+				onClick={onFinish}
 			>
 				{" "}
 				Agregar al carrito{" "}

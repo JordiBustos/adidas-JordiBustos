@@ -2,6 +2,9 @@ figure {
 	margin: 0;
 }
 
+a {
+	text-decoration: none;
+}
 .gallery__img--1 {
 	width: 70%;
 	object-fit: cover;
