@@ -5,22 +5,23 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../contexts/CartContext";
 
 
-const ItemDetail = ({ item }) => {
+const ItemDetail = ( {item} ) => {
+	console.log(item)
 	const [ammount, setAmmount] = useState(1);
 	const { addItem } = useContext(CartContext);
 	
 	const addOne = () => {
-		if (ammount + 1 < item.available_quantity) {
+		if (ammount + 1 < item.stock) {
 			setAmmount(ammount + 1);
 		} else {
-			if (ammount + 1 === item.available_quantity) {
+			if (ammount + 1 === item.stock) {
 				setAmmount(`${ammount + 1} (max)`);
 			}
 		}
 	};
 	const decreaseOne = () => {
-		if (ammount === `${item.available_quantity} (max)`) {
-			setAmmount(item.available_quantity - 1);
+		if (ammount === `${item.stock} (max)`) {
+			setAmmount(item.stock - 1);
 		} else {
 			if (ammount - 1 > 0) {
 				setAmmount(ammount - 1);
@@ -37,25 +38,24 @@ const ItemDetail = ({ item }) => {
 				<h2>Loading...</h2>
 			) : (
 				<>
-					{Array.isArray(item.pictures) &&
-					item.pictures.length > 2 ? (
+					{item.image ? (
 						<>
-							<TwoColumnImg src={item.pictures[0].url} />
-							<OneColumnImg src={item.pictures[1].url} />
+							<TwoColumnImg src={item.image} />
+							<OneColumnImg src={item.image} />
 							<SecondToThirdColumnImg
-								src={item.pictures[2].url}
+								src={item.image}
 							/>
 						</>
 					) : (
 						<>
-							<TwoColumnImg src={item.thumbnail} />
-							<OneColumnImg src={item.thumbnail} />
-							<SecondToThirdColumnImg src={item.thumbnail} />
+							<TwoColumnImg src={item.image} />
+							<OneColumnImg src={item.image} />
+							<SecondToThirdColumnImg src={item.image} />
 						</>
 					)}
 
 					<InfoWrapper>
-						<Type>{item.warranty}</Type>
+						<Type>{item.type}</Type>
 						<Title>{item.title}</Title>
 						<Price>${item.price}</Price>
 					</InfoWrapper>
@@ -70,7 +70,7 @@ const ItemDetail = ({ item }) => {
 							SHIPPING, RETURNS, & EXCHANGES
 						</Paragraph>
 						<Paragraph>
-							Cantidad disponible {item.available_quantity}
+							Cantidad disponible {item.stock}
 						</Paragraph>
 						{Array.isArray(item.list) ? (
 							<UlList>
@@ -87,7 +87,7 @@ const ItemDetail = ({ item }) => {
 							ammount={ammount}
 							onFinish={addToCart}
 						/>
-						<Detail>{item.detail}</Detail>
+						<Detail>{item.description}</Detail>
 						<Link to="/cart">
 							{" "}
 							<AddToCartButton>Comprar</AddToCartButton>

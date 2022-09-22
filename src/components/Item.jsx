@@ -1,17 +1,17 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const Item = ({ title, thumbnail, price, available_quantity, id }) => {
+const Item = ({ title, image, price, stock, id }) => {
 	return (
 		<Figure>
 			<Link to={`/item/${id}`}>
-				<img src={thumbnail} alt={title} />
+				<img src={image} alt={title} />
 			</Link>
 			<figcaption>
 				{" "}
 				<Price>${price}</Price> <Title>{title}</Title>{" "}
 				<Title>
-					<b>Stock: {available_quantity}</b>
+					<b>Stock: {stock}</b>
 				</Title>
 			</figcaption>
 		</Figure>

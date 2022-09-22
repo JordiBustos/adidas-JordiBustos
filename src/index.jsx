@@ -4,6 +4,25 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyC1wIoBI8bfORRjya59sgTd9gp5PiDLRb4",
+  authDomain: "adidas-ecommerce.firebaseapp.com",
+  projectId: "adidas-ecommerce",
+  storageBucket: "adidas-ecommerce.appspot.com",
+  messagingSenderId: "344406828762",
+  appId: "1:344406828762:web:94a5f6aef70be577fca7e3"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
