@@ -48,7 +48,7 @@ const Navbar = ({ cartValueNavBar }) => {
 						</Links>
 						<Container>
 							<NavLi>
-								<CartWidget cartValue={cartValueNavBar} />
+								<CartWidget />
 							</NavLi>
 						</Container>
 					</NavUl>

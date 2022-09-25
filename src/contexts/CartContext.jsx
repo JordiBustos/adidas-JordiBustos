@@ -4,6 +4,7 @@ const CartContext = React.createContext();
 
 const CartProvider = ({ children }) => {
 	const [cart, setCart] = useState([]);
+	const [cartLength, setCartLength] = useState(0);
 
 	function isInCart(id) {
 		return cart.some((item) => item.id === id);
@@ -24,7 +25,8 @@ const CartProvider = ({ children }) => {
   }
 
 	function removeItem(itemId) {
-		setCart(cart.filter((item) => item.item.id !== itemId));
+		setCart(cart.filter((item) => item.id !== itemId));
+		setCartLength(cartLength - parseInt(cart.find((item) => item.id === itemId).quantity));
 	}
 
 	function clear() {
@@ -32,7 +34,7 @@ const CartProvider = ({ children }) => {
 	}
 
 	return (
-		<CartContext.Provider value={{ addItem, removeItem, clear }}>
+		<CartContext.Provider value={{ cart, addItem, removeItem, clear, cartLength, setCartLength}}>
 			{children}
 		</CartContext.Provider>
 	);

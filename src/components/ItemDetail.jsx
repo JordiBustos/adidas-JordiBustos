@@ -6,9 +6,8 @@ import { CartContext } from "../contexts/CartContext";
 
 
 const ItemDetail = ( {item} ) => {
-	console.log(item)
 	const [ammount, setAmmount] = useState(1);
-	const { addItem } = useContext(CartContext);
+	const { addItem, setCartLength, cartLength } = useContext(CartContext);
 	
 	const addOne = () => {
 		if (ammount + 1 < item.stock) {
@@ -31,6 +30,7 @@ const ItemDetail = ( {item} ) => {
 
 	function addToCart() {
 		addItem(item, ammount);
+		setCartLength(cartLength + parseInt(ammount));
 	}
 	return (
 		<Wrapper>

@@ -41,7 +41,7 @@ const ItemListContainer = ({ category }) => {
 			if (category === "shop" || category === undefined) {
 				// If category is undefined, it means that the user is in the home page
 				// and we want to show all the products 
-				// If category is shop, it means that the user is in the shop page it's like the home
+				// If category is shop, it means that the user is in the shop page it's like the home because it's not implemented yet
 				setItems(cache);
 			} else {
 				// If category is not undefined, it means that the user is in a category page
