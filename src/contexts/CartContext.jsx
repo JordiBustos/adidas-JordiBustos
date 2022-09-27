@@ -10,15 +10,20 @@ const CartProvider = ({ children }) => {
 		return cart.some((item) => item.id === id);
 	}
 
+	function updateItemQuantity(id, quantity) {
+		const newCart = cart.map((item) => {
+			if (item.id === id) {
+				const prevQuantity = item.quantity;
+				return { ...item, quantity: prevQuantity + quantity };
+			}
+			return item;
+		});
+		setCart(newCart);
+	}
+
 	function addItem(item, quantity) {
     if (isInCart(item.id)) {
-      setCart(
-        cart.map((cartItem) =>
-          cartItem.id === item.id && item.available_quantity > cartItem.quantity
-            ? { ...cartItem, quantity: cartItem.quantity + quantity }
-            : cartItem
-        )
-      );
+      updateItemQuantity(item.id, quantity);
     } else {
       setCart([...cart, { ...item, quantity: quantity }]);
     }
@@ -34,7 +39,7 @@ const CartProvider = ({ children }) => {
 	}
 
 	return (
-		<CartContext.Provider value={{ cart, addItem, removeItem, clear, cartLength, setCartLength}}>
+		<CartContext.Provider value={{ cart, addItem, removeItem, clear, cartLength, setCartLength, updateItemQuantity}}>
 			{children}
 		</CartContext.Provider>
 	);

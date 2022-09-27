@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import ContactForm from "../ContactForm";
+
 const Cart = () => {
 	const { cart, removeItem, cartLength } = useContext(CartContext);
 	console.log(cart);
@@ -26,12 +28,15 @@ const Cart = () => {
       <Finish>Buy!</Finish>
 		</Wrapper>
     ) : (
+      <>
       <WrapperEmpty>
         <Title>Cart is empty</Title>
         <Link to="/">
           <CallToAction>Shop!</CallToAction>
         </Link>
       </WrapperEmpty>
+      <ContactForm />
+      </>
     )}
   </>	
 	);
