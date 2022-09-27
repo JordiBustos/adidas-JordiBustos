@@ -4,11 +4,10 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../contexts/CartContext";
 
-
-const ItemDetail = ( {item} ) => {
+const ItemDetail = ({ item }) => {
 	const [ammount, setAmmount] = useState(1);
 	const { addItem, setCartLength, cartLength } = useContext(CartContext);
-	
+
 	const addOne = () => {
 		if (ammount + 1 < item.stock) {
 			setAmmount(ammount + 1);
@@ -42,9 +41,7 @@ const ItemDetail = ( {item} ) => {
 						<>
 							<TwoColumnImg src={item.image} />
 							<OneColumnImg src={item.image} />
-							<SecondToThirdColumnImg
-								src={item.image}
-							/>
+							<SecondToThirdColumnImg src={item.image} />
 						</>
 					) : (
 						<>
@@ -69,9 +66,7 @@ const ItemDetail = ( {item} ) => {
 							JOIN ADICLUB TO GET UNLIMITED FREE STANDARD
 							SHIPPING, RETURNS, & EXCHANGES
 						</Paragraph>
-						<Paragraph>
-							Cantidad disponible {item.stock}
-						</Paragraph>
+						<Paragraph>Cantidad disponible {item.stock}</Paragraph>
 						{Array.isArray(item.list) ? (
 							<UlList>
 								{item.list.map((item, index) => (

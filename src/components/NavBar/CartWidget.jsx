@@ -1,20 +1,20 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useContext } from "react"
+import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 
 const CartWidget = () => {
-	const {cartLength} = useContext(CartContext); 
-	
+	const { cartLength } = useContext(CartContext);
+
 	return (
 		<>
 			<Link to="/cart">
-			<NavLinkIcon>
-				<FontAwesomeIcon icon={faShoppingCart} fontSize="25px" />
-			</NavLinkIcon>
-			<CartValue cartLength={cartLength}>{cartLength}</CartValue>
+				<NavLinkIcon>
+					<FontAwesomeIcon icon={faShoppingCart} fontSize="25px" />
+				</NavLinkIcon>
+				<CartValue cartLength={cartLength}>{cartLength}</CartValue>
 			</Link>
 		</>
 	);
@@ -38,7 +38,7 @@ const CartValue = styled.span`
 	font-family: "Roboto", Arial, Helvetica, sans-serif;
 	transition: 0.2s;
 
-	display: ${props => props.cartLength === 0 ? "none" : "block"};
+	display: ${(props) => (props.cartLength === 0 ? "none" : "block")};
 `;
 
 const NavLinkIcon = styled.a`

@@ -19,9 +19,7 @@ const ItemCount = ({ ammount, onAdd, onDecrease, onFinish }) => {
 			>
 				+
 			</ItemCountButton>
-			<AddToCartButton
-				onClick={onFinish}
-			>
+			<AddToCartButton onClick={onFinish}>
 				{" "}
 				Agregar al carrito{" "}
 			</AddToCartButton>
