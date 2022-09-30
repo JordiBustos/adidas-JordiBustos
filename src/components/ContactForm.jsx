@@ -1,14 +1,20 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { addDoc, getFirestore, collection } from "firebase/firestore";
+import { CartContext } from "../contexts/CartContext";
+import { CacheContext } from "../contexts/CacheContext";
+import { useNavigate } from "react-router-dom";
 
 const ContactForm = ({ items, total }) => {
+	const { clear } = useContext(CartContext);
+	const { setIdForm } = useContext(CacheContext);
+
+	const navigate = useNavigate();
 	const [form, setForm] = useState({
 		name: "",
 		email: "",
 		phone: "",
 	});
-	const [idForm, setIdForm] = useState(null);
 
 	const changeHandler = (e) => {
 		setForm({ ...form, [e.target.name]: e.target.value });
@@ -29,68 +35,50 @@ const ContactForm = ({ items, total }) => {
 		addDoc(orders, object).then((snapshot) => {
 			setIdForm(snapshot.id);
 		});
+
+		clear();
+		return navigate("/");
 	};
 
 	return (
-		<>
-			{idForm === null ? (
-				<Wrapper>
-					<Title>Fill your contact information</Title>
-					<Form onSubmit={submitHandler}>
-						<label htmlFor="name">Name</label>
-						<Input
-							onChange={changeHandler}
-							name="name"
-							id="name"
-							type="text"
-							placeholder="Name"
-							value={form.name}
-						/>
+		<Wrapper>
+			<Title>Fill your contact information</Title>
+			<Form onSubmit={submitHandler}>
+				<label htmlFor="name">Name</label>
+				<Input
+					onChange={changeHandler}
+					name="name"
+					id="name"
+					type="text"
+					placeholder="Name"
+					value={form.name}
+				/>
 
-						<label htmlFor="email">Email</label>
-						<Input
-							onChange={changeHandler}
-							id="email"
-							name="email"
-							type="email"
-							placeholder="Email"
-							value={form.email}
-						/>
+				<label htmlFor="email">Email</label>
+				<Input
+					onChange={changeHandler}
+					id="email"
+					name="email"
+					type="email"
+					placeholder="Email"
+					value={form.email}
+				/>
 
-						<label htmlFor="phone">Phone</label>
-						<Input
-							onChange={changeHandler}
-							name="phone"
-							id="phone"
-							type="text"
-							placeholder="Phone"
-							value={form.phone}
-						/>
-						<Submit type="submit" value="Buy!" />
-					</Form>
-					<p>
-						Your info will be saved and you will be contacted soon
-						:D
-					</p>
-				</Wrapper>
-			) : (
-				<Paragraph>
-					Track your buy with this id: <span>{idForm}</span>
-				</Paragraph>
-			)}
-		</>
+				<label htmlFor="phone">Phone</label>
+				<Input
+					onChange={changeHandler}
+					name="phone"
+					id="phone"
+					type="text"
+					placeholder="Phone"
+					value={form.phone}
+				/>
+				<Submit type="submit" value="Buy!" />
+			</Form>
+			<p>Your info will be saved and you will be contacted soon :D</p>
+		</Wrapper>
 	);
 };
-
-const Paragraph = styled.p`
-	font-size: 1.5rem;
-	text-align: center;
-	margin: 1rem;
-
-	span {
-		color: #e32b2b;
-	}
-`;
 
 const Wrapper = styled.div`
 	display: flex;

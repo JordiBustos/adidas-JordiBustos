@@ -38,6 +38,7 @@ const CartProvider = ({ children }) => {
 	}
 
 	function clear() {
+		setCartLength(0);
 		setCart([]);
 	}
 

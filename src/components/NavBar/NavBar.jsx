@@ -42,7 +42,7 @@ const Navbar = ({ cartValueNavBar }) => {
 							</NavLi>
 							<NavLi>
 								<Link to="/category/shop">
-									<NavLink>Shop</NavLink>
+									<NavLink>All</NavLink>
 								</Link>
 							</NavLi>
 						</Links>

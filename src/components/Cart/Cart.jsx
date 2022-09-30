@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import ContactForm from "../ContactForm";
 
 const Cart = () => {
-	const { cart, removeItem, cartLength } = useContext(CartContext);
+	const { cart, removeItem } = useContext(CartContext);
 	const [itemsOrder, setItemsOrder] = useState([]);
 	const [total, setTotal] = useState(0);
 
@@ -29,7 +29,7 @@ const Cart = () => {
 
 	return (
 		<>
-			{cartLength > 0 ? (
+			{cart?.length > 0 ? (
 				<>
 					<Wrapper>
 						{cart.map((item) => (
@@ -62,7 +62,6 @@ const Cart = () => {
 							<CallToAction>Shop!</CallToAction>
 						</Link>
 					</WrapperEmpty>
-					<ContactForm items={itemsOrder} total={total} />
 				</>
 			)}
 		</>
